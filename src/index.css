@@ -1,13 +1,36 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+
+@layer base {
+    body{
+        @apply bg-white w-full
+    }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@tailwind components;
+@tailwind utilities;
+
+.header-cart:hover path{
+    @apply fill-dark-blue
+}
+
+.close-hover path{
+    @apply fill-pale-orange
+}
+
+.close-hover:hover path{
+    @apply fill-orange
+}
+
+.prev-next{
+    @apply bg-pale-orange rounded-full relative flex flex-col justify-center items-center cursor-pointer
+}
+
+.prev-next:hover > svg path{
+    @apply stroke-orange
+}
+
+.btn{
+    @apply h-full cursor-pointer
 }
