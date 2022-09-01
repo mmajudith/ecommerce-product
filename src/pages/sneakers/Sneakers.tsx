@@ -1,21 +1,21 @@
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import { RootState } from '../../reduxToolKit/app/store';
-import { Products } from '../../utils/types/types';
+import { Products, ScreenWidth } from '../../utils/types/types';
 
 import SneakerDescription from './SneakersDescription/SneakersDescription';
 import SneakerThumbNail from '../../components/SneakerThumbNail/SneakerThumbNail';
 import LightBox from '../../components/LightBox/LightBox';
 import SlideButton from '../../components/SlideButton/SlideButton';
 
-const Sneakers = () => {
+const Sneakers = ({screenWidth}: ScreenWidth) => {
     const [globalIndex, setGlobalIndex] = useState(0);
     const [sneakersCollections, setSneakerCollections] = useState<Products>();
     const [showLightbox, setShowLightBox] = useState(false)
-    const [screenWidth, setScreenWidth] = useState(window.innerWidth)
 
     const { products } = useSelector((state: RootState) => state.sneakers);
 
+    //Function that toggled the products
     const navigateProducts = (index: number) => {
         setGlobalIndex(index);
     }
@@ -24,18 +24,14 @@ const Sneakers = () => {
         setShowLightBox(!showLightbox)
     }
     
+    //Filtering out the products based on the globalIndex
     useEffect(() => {
         let product = products.filter((el, index) => {
             return index === globalIndex
         });
+
         setSneakerCollections(product);
     }, [globalIndex, setSneakerCollections, products]);
-
-    useEffect(() => {
-        window.addEventListener('resize', () => setScreenWidth(window.innerWidth))
-
-        return window.addEventListener('resize', () => setScreenWidth(window.innerWidth))
-    }, [screenWidth]);
 
     return(
         <main className='w-full h-[90vh] m-auto md:w-10/12 md:h-[85vh]'>
@@ -51,15 +47,22 @@ const Sneakers = () => {
                             </div>
                            
                             {screenWidth > 767 ? (
-                                 <SneakerThumbNail navigateProducts={navigateProducts} globalIndex={globalIndex}/>
+                                <SneakerThumbNail 
+                                    navigateProducts={navigateProducts} 
+                                    globalIndex={globalIndex}
+                                />
                             ) : (
-                                <SlideButton mobile={'mobile'}/>
+                                <SlideButton mobile={'mobile'} 
+                                    setGlobalIndex={setGlobalIndex} 
+                                    globalIndex={ globalIndex}
+                                />
                             )}
                         </div>
                         
                         <SneakerDescription 
                             title={sneakersCollections[0].title}
                             description={sneakersCollections[0].description}
+                            globalIndex={ globalIndex}
                         />   
                     </div>
                 )}
@@ -70,6 +73,7 @@ const Sneakers = () => {
                     product={sneakersCollections?.[0].product}
                     navigateProducts={navigateProducts}
                     globalIndex={globalIndex}
+                    setGlobalIndex={setGlobalIndex}
                 />)}
             </>
         </main>

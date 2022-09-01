@@ -1,9 +1,16 @@
 /** @type {import('tailwindcss').Config} */ 
+
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
+    screens:{
+      'xs': '340px',
+      ...defaultTheme.screens,
+    },
     colors: {
       'orange': 'hsl(26, 100%, 55%)',
       'pale-orange': 'hsl(25, 100%, 94%)',

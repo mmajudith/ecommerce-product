@@ -1,14 +1,15 @@
 import { useState } from 'react'
-
+import { ScreenWidth } from '../../utils/types/types';
 import NavItems from '../NavItems/NavItems';
 import Cart from '../Cart/Cart';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import { ReactComponent as OpenItems } from '../../assets/icon-menu.svg'
 
-const Header = () => {
+const Header = ({screenWidth}:ScreenWidth) => {
 
     const [toggleMenu, setToggleMenu] = useState<boolean>(false);
 
+    //Toggle menu function
     const toggleMenuHandler = () =>{
         setToggleMenu(!toggleMenu)
     }
@@ -23,7 +24,7 @@ const Header = () => {
                     </div>
                     <NavItems toggleMenuHandler={toggleMenuHandler} toggleMenu={toggleMenu}/>
                 </div>
-                <Cart />
+                <Cart screenWidth={screenWidth}/>
             </nav>
         </header>
     )

@@ -10,3 +10,7 @@ export interface SneakersState {
     products: Products
     addedToCart: Products
 }
+
+export type ScreenWidth = {
+    screenWidth: number
+}

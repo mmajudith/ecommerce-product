@@ -5,20 +5,19 @@ import { SneakersState } from '../../../utils/types/types';
 
 const initialState: SneakersState = {
     products: data,
-    addedToCart:[],
+    addedToCart:[]
 }
 
 export const sneakerSlice = createSlice({
   name: 'sneakers',
   initialState,
   reducers: {
-    addToCart: (state, action: PayloadAction) => {
-      state.products = [
-
-      ]
+    addToCart:(state, action: PayloadAction<number>) => {
+      let product = state.products.filter((el, index) => index === action.payload)
+        state.addedToCart = [...state.addedToCart,...product];
     },
-    deleteFromCart: (state, action: PayloadAction) => {
-      
+    deleteFromCart: (state, action: PayloadAction<number>) => {
+      state.addedToCart = state.addedToCart.filter(({ id }) => id !== action.payload)
     }
   },
 })
