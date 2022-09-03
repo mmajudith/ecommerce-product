@@ -18,7 +18,7 @@ const Header = ({screenWidth}:ScreenWidth) => {
         <header className='w-full h-[10vh] relative bg-white z-10 md:h-[15vh] flex flex-col justify-center items-center'>
             <nav className='w-[90%] h-full md:relative flex flex-row justify-between items-center md:border-b md:border-[#ddd] md:border-solid xl:w-[1100px]'>
                 <div className='h-full flex items-center gap-x-12'>
-                    <div className='flex items-center gap-x-3'>
+                    <div className='flex items-center gap-x-[12px]'>
                         <OpenItems onClick={toggleMenuHandler} className='cursor-pointer md:hidden'/>
                         <Logo className='mb-1'/>
                     </div>

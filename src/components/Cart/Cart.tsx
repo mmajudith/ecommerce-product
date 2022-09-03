@@ -41,7 +41,7 @@ const Cart = ({screenWidth}:ScreenWidth) => {
 
     return(
         <>
-            <div className='flex items-center gap-x-5 md:gap-x-10'>
+            <div className='flex items-center gap-x-[20px] md:gap-x-10'>
                 <div className='relative'>
                     {quatity === 0 ? 
                         (<span>{""}</span> 
