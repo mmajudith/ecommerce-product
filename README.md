@@ -1,6 +1,6 @@
 # E-commerce product
 
-A website that sells universal sneakers both for men and women.
+A website that sells universal sneakers. You can toggle the products, add and remove sneakers from cart, click on the cart to view your added products with the price.
 
 ### Links
 
